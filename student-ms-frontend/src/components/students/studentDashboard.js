@@ -97,6 +97,21 @@ class StudentDashboard extends Component {
                             </Grid>
                         </Grid>
 
+                    <Grid container direction={"row"} spacing={4} xs={12}>
+
+
+                            <Link to="/studentEnrollment" style={{ textDecoration: 'none' }}>
+                                <Paper style={{background: "#3949ab", color: "white"}}>
+                                    <div style={{paddingTop: 20, paddingBottom: 20}}>
+                                        <Typography variant="h6" >
+                                            Student Enrollment
+                                        </Typography>
+
+                                    </div>
+                                </Paper>
+                            </Link>
+                        </Grid>
+
 
                     <Route path="/" exact component={studentHome}/>
                     <Route path="/studentCourses" exact component={studentCourses}/>
