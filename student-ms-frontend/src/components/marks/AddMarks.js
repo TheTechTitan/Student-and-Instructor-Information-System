@@ -1,8 +1,6 @@
 import React, {Component} from 'react';
 import CourseList from './CourseList'
 import SubjectList from "./SubjectList";
-import AddCourse from './AddCourse'
-import CourseFee from './CourseFee'
 import ReactDOM from 'react-dom';
 import { NavLink} from 'react-router-dom'
 
