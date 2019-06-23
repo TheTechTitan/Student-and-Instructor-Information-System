@@ -39,6 +39,8 @@ import editAssignment from "./components/assignmentsAndExams/editAssignment";
 import createExams from "./components/assignmentsAndExams/createExams";
 import editExams from "./components/assignmentsAndExams/editExams";
 import viewExams from "./components/assignmentsAndExams/viewExams";
+import MarksPortal from "./components/marks/marksPortal";
+import AddMarks from "./components/marks/AddMarks";
 
 
 class App extends React.Component{
@@ -262,6 +264,10 @@ class App extends React.Component{
 
                             {/*Lecturer*/}
                             <Route path="/lecturer/add" component={addLecturer}/>
+
+                            {/*Marks*/}
+                            <Route exact path="/" component={MarksPortal} />
+                            <Route path="/add-marks" component={AddMarks} />
 
                         </Switch>
                     </Route>
