@@ -28,4 +28,13 @@ router.post('/add-course', (req, res, next) => {
     })
 });
 
+router.post('/add-course-subject/:courseCode/:objID', (req, res, next) => {
+
+    courseController.insertCourseSubjects(req.params.courseCode,req.params.objID).then((data) => {
+        res.status(data.status).send(data.message)
+    }).catch(err => {
+        res.status(err.status).send(err.message)
+    })
+});
+
 module.exports = router;

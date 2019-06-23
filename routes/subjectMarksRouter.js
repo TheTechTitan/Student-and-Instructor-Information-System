@@ -13,7 +13,7 @@ router.get('/get-subjects', (req, res, next) => {
 router.post('/add-subject', (req, res, next) => {
     const body = req.body;
     subjectController.insertSubject(body).then((data) => {
-        res.status(data.status).send(data.message);
+        res.status(data.status).send({objID: data.objID});
     }).catch(err => {
         res.status(err.status).send(err.message);
     })

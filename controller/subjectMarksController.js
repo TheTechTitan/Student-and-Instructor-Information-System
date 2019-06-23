@@ -11,8 +11,8 @@ const subjectMarksController = function () {
                 marks: subject.marks
             });
 
-            newSubject.save().then(() => {
-                resolve({status: 200, message: "Added Subject Successfully"})
+            newSubject.save().then((data) => {
+                resolve({status: 200, objID: data._id})
             }).catch(err => {
                 reject({status: 500, message: "Error: " + err})
             })
@@ -42,11 +42,11 @@ const subjectMarksController = function () {
     this.insertSubjectMarks = (code,objID) => {
         return new Promise((resolve, reject) => {
 
-                SubjectModel.update({subjectCode: code},{$push:{"marks":[ObjectID(objID)]}}).then((data) => {
-                    resolve({status: 200, message: data});
-                }).catch(err => {
-                    reject({status: 500, message: "Error:- " + err});
-                })
+            SubjectModel.update({subjectCode: code},{$push:{"marks":[ObjectID(objID)]}}).then((data) => {
+                resolve({status: 200, message: data});
+            }).catch(err => {
+                reject({status: 500, message: "Error:- " + err});
+            })
 
         })
     };
