@@ -16,17 +16,17 @@ class SubjectList extends Component {
     }
 
     componentDidMount() {
-       this.setState({
-           subjects:this.props.subs
-       })
+        this.setState({
+            subjects:this.props.subs
+        })
     }
 
-   Subheader(){
-            if(this.state.count>0){
-                return (
-                    <h2>Subjects</h2>
-                )
-            }
+    Subheader(){
+        if(this.state.count>0){
+            return (
+                <h2>Subjects</h2>
+            )
+        }
     }
 
 
@@ -46,16 +46,16 @@ class SubjectList extends Component {
                         onClick={() => {
                             this.props.getSubMarks(subject.subjectCode);
                         }}
-                     >
-                    {subject.name}
+                    >
+                        {subject.name} - {subject.subjectCode}
                     </div>
                 )
             })
 
             if(this.state.count===0){
                 return (
-                    <div className="col-md-5">
-                        <h2>Sorry! No Train available</h2>
+                    <div className="col-md-2">
+                        <h2>Sorry! No Subjects available</h2>
                     </div>
                 )
             }
@@ -63,12 +63,12 @@ class SubjectList extends Component {
 
         return(
 
-                <div>
-                    {this.Subheader()}
-                    <ul>
-                        {subList}
-                    </ul>
-                </div>
+            <div>
+                {this.Subheader()}
+                <ul>
+                    {subList}
+                </ul>
+            </div>
 
 
         )

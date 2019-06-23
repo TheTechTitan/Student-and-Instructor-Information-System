@@ -2,27 +2,27 @@ import React, {Component} from 'react';
 import 'bootstrap/dist/css/bootstrap.css'
 import { NavLink} from 'react-router-dom'
 
-class MarksForm extends Component {
+class SubjectForm extends Component {
     constructor(props) {
         super(props);
         this.state = {
 
             objID:String,
-            subjectCode:this.props.subCode
+            courseCode:this.props.cosCode
         }
     }
 
-    addMarks(){
+    addSubject(){
 
-        const itNumber=this.refs.itNumber.value;
+
         const name=this.refs.name.value;
-        const marks=this.refs.marks.value;
+        const subjectCode=this.refs.subjectCode.value;
 
-        var newMarks={"itNumber":itNumber,"name":name,"marks":marks}
+        var newSubject={"name":name,"subjectCode":subjectCode,"marks":[]}
 
-        fetch('http://localhost:5000/marks/add-marks',{
+        fetch('http://localhost:5000/subject/add-subject',{
             method: 'POST',
-            body:JSON.stringify(newMarks),
+            body:JSON.stringify(newSubject),
             headers: {'Content-Type': 'application/json'}
 
         }).then(response=>{
@@ -31,16 +31,17 @@ class MarksForm extends Component {
             /* this.setState({
                  objID:objID.objID
              },()=>console.log('raaittt got the objID >',this.state.objID))*/
-            this.addMarksToSubjects(objID.objID);
+            this.addSubjectsToCourse(objID.objID);
         }).catch(err=>{
             alert("addmarks "+err);
         })
 
     }
 
-    addMarksToSubjects(ob){
+    addSubjectsToCourse(ob){
 
-        fetch(`http://localhost:5000/subject/add-subject-marks/${this.state.subjectCode}/${ob}`,{
+
+        fetch(`http://localhost:5000/course/add-course-subject/${this.state.courseCode}/${ob}`,{
             method: 'POST',
             headers: {'Content-Type': 'application/json'}
         }).then(response=>{
@@ -57,27 +58,22 @@ class MarksForm extends Component {
         return(
 
             <div>
+
                 <div className="form-group">
-                    <label >IT-Number</label>
-                    <input id="subOne" className="form-control" placeholder="IT-Number" ref="itNumber"/>
+                    <label >Subject Name</label>
+                    <input id="subOne" className="form-control" placeholder="Subject Name" ref="name"/>
                 </div>
 
                 <div className="form-group">
-                    <label >Student Name</label>
-                    <input id="subOne" className="form-control" placeholder="Student Name" ref="name"/>
-                </div>
-
-                <div className="form-group">
-                    <label >Marks</label>
-                    <input id="subOne3" className="form-control" placeholder="Marks" ref="marks"/>
+                    <label >subject Code</label>
+                    <input id="subOne3" className="form-control" placeholder="Subject code" ref="subjectCode"/>
                 </div>
 
 
-
-                <button type="button" className="btn btn-primary"  onClick={()=>this.addMarks()}>SUBMIT MARKS</button>
+                <button type="button" className="btn btn-primary"  onClick={()=>this.addSubject()}>RELEASE SUBJECT MARKS</button>
 
             </div>
         );
     }
 }
-export default MarksForm;
+export default SubjectForm;

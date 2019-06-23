@@ -39,7 +39,7 @@ class MarksList extends Component {
                 this.state.count=this.state.count+1;
                 return(
 
-                        <li key={grading._id}>{grading.itNumber} - {grading.name} - {grading.marks} </li>
+                    <li key={grading._id}>{grading.itNumber} - {grading.name} - {grading.marks} </li>
 
                 )
             })

@@ -77,13 +77,13 @@ class MarksPortal extends Component {
                     <NavLink to="/" style={{color:"white"}}>Home</NavLink>
                     <NavLink to="/add-marks" style={{color:"white"}}>Add Marks</NavLink>
 
-                    <div className="rowMarks">
+                    <div className="row">
 
                         <div className="col-md-3">
                             <form className="padding sub">
                                 <fieldset >
 
-                                <CourseList getCourseSub={this.getCourseSubjects.bind(this)}/>
+                                    <CourseList getCourseSub={this.getCourseSubjects.bind(this)}/>
 
                                 </fieldset>
                             </form>
@@ -93,16 +93,16 @@ class MarksPortal extends Component {
                             <form className="padding sub">
                                 <fieldset >
 
-                                <SubjectList subs={this.state.subjects}
-                                             getSubMarks={this.getSubjectMarks.bind(this)}
+                                    <SubjectList subs={this.state.subjects}
+                                                 getSubMarks={this.getSubjectMarks.bind(this)}
 
-                                />
+                                    />
 
                                 </fieldset>
                             </form>
                         </div>
 
-                        <div className="col-md-6">
+                        <div className="col-md-4">
                             <form className="padding sub">
                                 <fieldset >
 

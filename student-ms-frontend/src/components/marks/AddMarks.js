@@ -10,6 +10,7 @@ import 'bootstrap/dist/css/bootstrap.css'
 import './marksCSS.css'
 import MarksList from "./MarksList";
 import MarksForm from "./MarksForm";
+import SubjectForm from "./SubjectForm";
 
 class Addmarks extends Component {
     constructor(props) {
@@ -17,14 +18,21 @@ class Addmarks extends Component {
         this.state = {
             subjects:[],
             marks:[],
+            courseCode:String,
             subjectCode:String,
-            trigger:false,
+            MarksTrigger:false,
+            SubTrigger:false
 
         }
     }
 
 
     getCourseSubjects(courseCode){
+
+        this.setState({
+            courseCode:courseCode,
+            SubTrigger:true
+        })
 
         /*e.preventDefault();*/
         const searchSubject=courseCode;
@@ -46,11 +54,20 @@ class Addmarks extends Component {
 
     }
 
-    getSubjectMarks(subjectCode, objID){
+    getSubjectMarks(subjectCode){
 
         this.setState({
             subjectCode:subjectCode,
-            trigger:true
+            MarksTrigger:true
+        })
+
+    }
+
+    getGetCourseCode(courseCode){
+
+        this.setState({
+            courseCode:courseCode,
+            SubTrigger:true
         })
 
     }
@@ -67,13 +84,15 @@ class Addmarks extends Component {
                     <NavLink to="/" style={{color:"white"}}>Home</NavLink>
                     <h1>ADD MARKS</h1>
 
-                    <div className="rowMarks">
+                    <div className="row">
 
                         <div className="col-md-3">
                             <form className="padding sub">
                                 <fieldset >
 
-                                    <CourseList getCourseSub={this.getCourseSubjects.bind(this)}/>
+                                    <CourseList getCourseSub={this.getCourseSubjects.bind(this)}
+
+                                    />
 
                                 </fieldset>
                             </form>
@@ -92,12 +111,27 @@ class Addmarks extends Component {
                             </form>
                         </div>
 
-                        <div className="col-md-6">
+                        <div className="col-md-3">
                             <form className="padding sub">
                                 <fieldset >
 
                                     {
-                                        this.state.trigger===true? <MarksForm subCode={this.state.subjectCode}/>:<div></div>
+                                        this.state.SubTrigger===true? <SubjectForm cosCode={this.state.courseCode}/>:<div></div>
+
+                                    }
+
+                                </fieldset>
+                            </form>
+                        </div>
+
+
+
+                        <div className="col-md-3">
+                            <form className="padding sub">
+                                <fieldset >
+
+                                    {
+                                        this.state.MarksTrigger===true? <MarksForm subCode={this.state.subjectCode}/>:<div></div>
 
                                     }
 
@@ -106,6 +140,8 @@ class Addmarks extends Component {
                         </div>
 
                     </div>
+
+
 
                 </div>
 
