@@ -41,7 +41,7 @@ class App extends React.Component{
             },
             accessString: '',
             userDetails : [],
-            pageLoaded: true,
+            pageLoaded: false,
         }
     }
 
