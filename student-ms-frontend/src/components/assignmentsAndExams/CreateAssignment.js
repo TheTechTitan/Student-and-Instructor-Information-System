@@ -101,15 +101,23 @@ class OutlinedTextFields extends React.Component {
     onSubmit(e) {
         e.preventDefault();
 
+        const newExam = {
+            examName: this.state.examName,
+            examDuration: this.state.examDuration,
+            examDate: this.state.examDate,
+            courseID: this.state.courseID
+        };
+
+        axios.post('http://localhost:5000/exams/', newExam)
+            .then(res => console.log(res.data));
 
         this.setState({
-            assignmentTitle: '',
-            assignmentDueDate: '',
-            assignmentDueTime: '',
-            assignmentDescription: '',
-            courseID:'',
-            files:''
+            examName: '',
+            examDuration: '',
+            examDate: '',
+            courseID:''
         })
+
     }
 
     render() {
@@ -192,10 +200,10 @@ class OutlinedTextFields extends React.Component {
                     onChange={this.onChangeAssignmentDueTime}
                 />
 
-                <DropzoneArea
-                    value = {this.state.files}
-                    onSave={this.onSaveAssignmentFile}
-                />
+                {/*<DropzoneArea*/}
+                    {/*value = {this.state.files}*/}
+                    {/*onSave={this.onSaveAssignmentFile}*/}
+                {/*/>*/}
 
                 <Button
                     type="submit"

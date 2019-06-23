@@ -3,9 +3,6 @@ const Schema = mongoose.Schema;
 
 //AssignmentModelSchema
 const AssignmentSchema = new Schema ({
-    AssignmentID:{
-        type:String
-    },
     Title:{
         type:String,
         required:true
@@ -22,10 +19,14 @@ const AssignmentSchema = new Schema ({
         type:Date,
         required:true
     },
-    File:{
-        type:String,
-        required:true
-    }
+    students: [{
+        type: Schema.Types.ObjectId,
+        ref: 'StudentEnrollment'
+    }]
+
+
+
+
 });
 
 mongoose.model( 'AssignmentModel', AssignmentSchema);

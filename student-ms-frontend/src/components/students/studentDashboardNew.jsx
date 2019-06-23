@@ -14,7 +14,6 @@ const images = [
         //     <Link to="/studentHome" style={{textDecoration: 'none'}}>Home</Link>
         //
 
-
     },
     {
         url: '/images/studentSettings.jpg',

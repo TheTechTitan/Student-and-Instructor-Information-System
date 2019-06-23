@@ -18,14 +18,12 @@ export default class EditAssignments extends Component {
             assignmentDueDate: '',
             assignmentDueTime: '00:00',
             assignmentDescription: '',
-            courseID:'',
-            files: '',
-            open:false
+            courseID:''
         }
     }
 
     componentDidMount() {
-        axios.get('http://localhost:3000/assignments/'+this.props.match.params.id)
+        axios.get('http://localhost:5000/assignments/'+this.props.match.params.id)
             .then(response => {
                 this.setState({
                     assignmentTitle: response.data.assignmentTitle,
@@ -33,7 +31,6 @@ export default class EditAssignments extends Component {
                     assignmentDueDate: response.data.assignmentDueDate,
                     assignmentDueTime: response.data.assignmentDueTime,
                     courseID:response.data.courseID,
-                    files:response.data.files
 
                 })
             })
@@ -85,8 +82,7 @@ export default class EditAssignments extends Component {
             assignmentDescription: this.state.assignmentDescription,
             assignmentDueDate: this.state.assignmentDueDate,
             assignmentDueTime: this.state.assignmentDueTime,
-            courseID:this.state.courseID,
-            files:this.state.files
+            courseID:this.state.courseID
 
         };
         console.log(obj);
@@ -140,12 +136,12 @@ export default class EditAssignments extends Component {
                         />
                     </div>
 
-                    <div className="container">
-                    <DropzoneArea
-                        value = {this.state.files}
-                        onSave={this.onSaveAssignmentFile}
-                    />
-                    </div>
+                    {/*<div className="container">*/}
+                    {/*<DropzoneArea*/}
+                        {/*value = {this.state.files}*/}
+                        {/*onSave={this.onSaveAssignmentFile}*/}
+                    {/*/>*/}
+                    {/*</div>*/}
                     <br />
 
                     <div className="form-group">

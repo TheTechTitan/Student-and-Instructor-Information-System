@@ -8,8 +8,7 @@ const AssignmentController = function () {
                 Title:data.Title,
                 Description: data.Description,
                 CourseID: data.CourseID,
-                DueDate: data.DueDate,
-                File: data.File
+                DueDate: data.DueDate
             });
             assignment.save().then(() => {
                 resolve({status:200, message: "New Assignment Added successfully"});
