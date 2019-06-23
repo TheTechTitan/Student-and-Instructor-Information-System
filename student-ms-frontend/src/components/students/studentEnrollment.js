@@ -22,8 +22,7 @@ class StudentEnrollment extends Component{
         super(props);
         this.state = {
             studentEnrollmentDetails : {
-                studentID: '',
-                courseID: '',
+                user:[],
                 courses: []
             }
 
@@ -33,7 +32,9 @@ class StudentEnrollment extends Component{
     componentDidMount() {
         axios.get('').then(
             data => {
-                this.setState ({
+                this.setState (
+                    {
+                    user: data.data,
                     courses: data.data
                 })
             }
@@ -54,13 +55,13 @@ class StudentEnrollment extends Component{
     handleStEnrollment = e => {
         //e.preventDefault();
 
-        const studentEnrollmentPostUrl = "http://localhost:5000/rest/api/StudentEnrollmentRouter";
+        const studentEnrollmentPostUrl = "http://localhost:5000/rest/api/StudentRouter";
         const studentEnrollmentDetails = this.state.studentEnrollmentDetails;
 
         
         const studentEnrollmentData = {
-            studentID: studentEnrollmentDetails.studentID,
-            courseID: studentEnrollmentDetails.courseID
+            user: studentEnrollmentDetails.user,
+            courses: studentEnrollmentDetails.courses
 
         }
 
@@ -105,7 +106,7 @@ class StudentEnrollment extends Component{
                             name="studentID"
                             id="standard-ID"
                             label="Student ID "
-                            value={studentID}
+                            value={user}
                             margin="normal"
                             onChange={this.handleFormChange}
                             fullWidth
@@ -114,7 +115,7 @@ class StudentEnrollment extends Component{
                             name="courseID"
                             id="standard-ID"
                             label="Course ID"
-                            value={courseID}
+                            value={courses}
                             margin="normal"
                             onChange={this.handleFormChange}
                             fullWidth
